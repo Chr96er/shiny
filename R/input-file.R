@@ -27,6 +27,8 @@
 #'   Internet Explorer 9 and earlier.}
 #' @param accept A character vector of MIME types; gives the browser a hint of
 #'   what kind of files the server is expecting.
+#' @param progressLabelAlignment A character vector of text alignments for
+#' upload progress label. Defaults to "left".
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -70,9 +72,10 @@
 #' }
 #' @export
 fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
-  width = NULL) {
+  width = NULL, progressLabelAlignment = c("left", "center", "right")) {
 
   restoredValue <- restoreInput(id = inputId, default = NULL)
+  progressLabelAlignment <- progressLabelAlignment[1]
 
   # Catch potential edge case - ensure that it's either NULL or a data frame.
   if (!is.null(restoredValue) && !is.data.frame(restoredValue)) {
@@ -111,7 +114,7 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
       ),
       tags$input(type = "text", class = "form-control",
         placeholder = "No file selected", readonly = "readonly",
-        style="text-align: center;"
+        style = paste0("text-align: ", progressLabelAlignment, ";)")
       )
     ),
 
