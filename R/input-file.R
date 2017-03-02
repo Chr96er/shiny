@@ -41,7 +41,8 @@
 #'         accept = c(
 #'           "text/csv",
 #'           "text/comma-separated-values,text/plain",
-#'           ".csv")
+#'           ".csv"),
+#'         progressLabelAlignment = "center"
 #'         ),
 #'       tags$hr(),
 #'       checkboxInput("header", "Header", TRUE)
