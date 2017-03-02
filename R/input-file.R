@@ -110,7 +110,8 @@ fileInput <- function(inputId, label, multiple = FALSE, accept = NULL,
         )
       ),
       tags$input(type = "text", class = "form-control",
-        placeholder = "No file selected", readonly = "readonly"
+        placeholder = "No file selected", readonly = "readonly",
+        style="text-align: center;"
       )
     ),
 
